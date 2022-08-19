@@ -8,6 +8,10 @@
 
 <h1>All Events</h1>
 
+<!-- the unless syntax will see if the items are true then return the HTML element/text, if
+items are false will skip HTML element/text-->
+<p th:unless="${events} and ${events.size()}">No Events!</p>
+
 <ul>
     <th:block th:each="event : ${events}"> <!-- loops through events list -->
         <li th:text="${event}"></li>  <!-- adds each element of the events list -->
