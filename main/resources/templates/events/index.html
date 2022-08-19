@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="container">
 
 <h1>All Events</h1>
 
@@ -11,11 +11,16 @@
 items are false will skip HTML element/text-->
 <p th:unless="${events} and ${events.size()}">No Events!</p>
 
-<ul>
-    <th:block th:each="event : ${events}"> <!-- loops through events list -->
-        <li th:text="${event}"></li>  <!-- adds each element of the events list -->
-    </th:block>
-</ul>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tr th:each="event : ${events}"> <!-- loops through events list -->
+        <td th:text="${event}"></td>  <!-- adds each element of the events list -->
+    </tr>
+</table>
 
 </body>
 </html>

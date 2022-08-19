@@ -3,6 +3,8 @@
 
 <head th:replace="fragments :: head"></head>
 
+<body class="container">
+
 <head>
     <meta charset="UTF-8">
 
@@ -16,13 +18,21 @@
 <body>
 
 
+
 <h1>Create Event</h1>
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post" action="/events/create">
-    <input type="text" name="eventName">
-    <input type="submit" value="Create Event">
+<form method="post">
+    <div class="form-group">
+        <label>
+            <input type="text" name="eventName" class="form-control">
+        </label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create Event" class="btn btn-success">
+    </div>
+
 </form>
 
 </body>
