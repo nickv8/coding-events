@@ -37,10 +37,4 @@ public class EventController {
     }
 
 
-    //live at /events/create
-    @GetMapping("create")
-    public String renderCreateEventForm() {
-        return "events/create";
-    }
-
 }
