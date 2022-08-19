@@ -22,6 +22,7 @@ public class EventController {
         return "events/index";
     }
 
+
     //lives at /events/create
     @GetMapping("create")
     public String renderCreatedEventsForm(){
@@ -34,4 +35,12 @@ public class EventController {
         events.add(eventName);
         return "redirect:";  //instructs browser to redirect to the root path
     }
+
+
+    //live at /events/create
+    @GetMapping("create")
+    public String renderCreateEventForm() {
+        return "events/create";
+    }
+
 }
