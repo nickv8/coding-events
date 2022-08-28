@@ -12,7 +12,7 @@ items are false will skip HTML element/text-->
 <p th:unless="${events} and ${events.size()}">No Events!</p>
 
 
-<!-- creates a striped table using bootstrap clases-->
+<!-- creates a striped table using bootstrap classes-->
 <table class="table table-striped">
     <thead>
         <tr>
@@ -20,7 +20,7 @@ items are false will skip HTML element/text-->
         </tr>
     </thead>
     <tr th:each="event : ${events}"> <!-- loops through events list -->
-        <td th:text="${event}"></td>  <!-- adds each element of the events list -->
+        <td th:text="${event.name}"></td>  <!-- adds each element of the events list -->
     </tr>
 </table>
 
