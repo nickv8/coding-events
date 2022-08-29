@@ -23,14 +23,20 @@ public class EventController {
 
 
     @GetMapping("create")
+
+    public String displayCreatedEventsForm(){
+
     public String displayCreatedEventsForm(Model model){
         model.addAttribute("title", "Create Event");
+
         return "events/create";
     }
 
     @PostMapping("create")
+
     public String processCreateEventForm(@ModelAttribute Event newEvent) {
         EventData.add(newEvent);
+
         return "redirect:";  //instructs browser to redirect to the root path
     }
 
