@@ -18,12 +18,15 @@ items are false will skip HTML element/text-->
         <tr>
             <th>Name</th>
             <th>Description</th>
+
+    </thead>
+        <tr th:each="event : ${events}"> <!-- loops through events list -->
+            <td th:text="${event.name}"></td>  <!-- adds each element of the events list -->
+            <td th:text="${event.description}"></td>
         </tr>
+
    </thead>
-      <tr th:each="event : ${events}"> <!-- loops through events list -->
-        <td th:text="${event.name}"></td>  <!-- adds each element of the events list -->
-        <td th:text="${event.description}"></td>
-      </tr>
+
 </table>
 </body>
 </html>
