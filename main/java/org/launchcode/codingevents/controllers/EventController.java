@@ -28,14 +28,28 @@ public class EventController {
 
 
     @GetMapping("create")
+
+    public String displayCreatedEventsForm(){
+
     public String displayCreatedEventsForm(Model model){
         model.addAttribute("title", "Create Event");
+
         return "events/create";
     }
 
     @PostMapping("create")
+
+
+    public String processCreateEventForm(@RequestParam String eventName) {
+        events.add(eventName);
+
+    public String createEvent(@RequestParam String eventName, String description) {
+        events.put(eventName, description);
+
+
     public String processCreateEventForm(@RequestParam String eventName, @RequestParam String eventDescription) {
         events.add(new Event(eventName, eventDescription));
+
         return "redirect:";  //instructs browser to redirect to the root path
     }
 
