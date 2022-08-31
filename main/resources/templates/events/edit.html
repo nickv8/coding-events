@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<header th:replace="fragments :: header"></header>
+
+<h1>Create Event</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<!-- this is the form to be completed by user, using bootstrap classes-->
+<form  method="post" th:action = "@{/events/edit}">
+
+
+        <th:block th:each="event : ${events}">
+            <div class="form-group">
+                <label>
+                    <span th:text="${event.name}"></span>
+                    <span th:text="${event.description"></span>
+                    <input type="checkbox" name="eventIds" th:value="${event.id}"/>
+                    <input type="hidden" th:value="${event.id}" name="eventId" />
+                </label>
+            </div>
+        </th:block>
+
+        <input type="submit" value="Edit Event" class="btn btn-success">
+
+
+</form>
+
+</body>
+</html>
