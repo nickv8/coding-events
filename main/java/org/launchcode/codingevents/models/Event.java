@@ -3,9 +3,8 @@ package org.launchcode.codingevents.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;;
+import javax.validation.constraints.*;
+;
 
 
 
@@ -23,14 +22,23 @@ public class Event {
     private String description;
 
     @NotBlank
+    @Size (max=150, message="Location is too long.")
+    private String location;
+
+    @NotBlank
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @AssertTrue
+    private Boolean registered;
+
+    public Event(String name, String description, String location, String contactEmail, Boolean registered) {
         this();
         this.name = name;
         this.description = description;
+        this.location = location;
         this.contactEmail = contactEmail;
+        this.registered = registered;
 
     }
 
@@ -61,6 +69,22 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Boolean getRegistered() {
+        return registered;
+    }
+
+    public void setRegistered(Boolean registered) {
+        this.registered = registered;
     }
 
     public int getId() {
