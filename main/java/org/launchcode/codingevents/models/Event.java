@@ -32,13 +32,16 @@ public class Event {
     @AssertTrue
     private Boolean registered;
 
-    public Event(String name, String description, String location, String contactEmail, Boolean registered) {
+    private EventType type;
+
+    public Event(String name, String description, String location, String contactEmail, Boolean registered, EventType type) {
         this();
         this.name = name;
         this.description = description;
         this.location = location;
         this.contactEmail = contactEmail;
         this.registered = registered;
+        this.type = type;
 
     }
 
@@ -85,6 +88,14 @@ public class Event {
 
     public void setRegistered(Boolean registered) {
         this.registered = registered;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public int getId() {
