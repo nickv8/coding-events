@@ -1,21 +1,23 @@
 package org.launchcode.codingevents.models;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
-;
 
-
-
-
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
 
 
-    @NotBlank
+    @NotBlank (message= "Name is required")
     @Size (min = 3, max = 50, message="Name must be between 3 and 50 characters.")
     private String name;
     @Size (max = 500, message="Description is too long.")
@@ -35,7 +37,7 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String location, String contactEmail, Boolean registered, EventType type) {
-        this();
+
         this.name = name;
         this.description = description;
         this.location = location;
@@ -45,10 +47,7 @@ public class Event {
 
     }
 
-    public Event() {
-        this.id = nextId;
-        nextId++;
-    }
+    public Event() {}
 
     public String getName() {
         return name;
