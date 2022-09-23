@@ -1,18 +1,10 @@
 package org.launchcode.codingevents.models;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @Entity
 public class Event extends AbstractEntity {
-
-
     @NotBlank (message= "Name is required")
     @Size (min = 3, max = 50, message="Name must be between 3 and 50 characters.")
     private String name;
@@ -27,19 +19,21 @@ public class Event extends AbstractEntity {
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    @AssertTrue
-    private Boolean registered;
+//    @AssertTrue
+//    private Boolean registered;
 
-    private EventType type;
+    @ManyToOne
+    @NotNull(message= "Category is required")
+    private EventCategory eventCategory;
 
-    public Event(String name, String description, String location, String contactEmail, Boolean registered, EventType type) {
+    public Event(String name, String description, String location, String contactEmail, Boolean registered, EventCategory eventCategory) {
 
         this.name = name;
         this.description = description;
         this.location = location;
         this.contactEmail = contactEmail;
-        this.registered = registered;
-        this.type = type;
+//        this.registered = registered;
+        this.eventCategory = eventCategory;
 
     }
 
@@ -77,23 +71,21 @@ public class Event extends AbstractEntity {
         this.location = location;
     }
 
-    public Boolean getRegistered() {
-        return registered;
+//    public Boolean getRegistered() {
+//        return registered;
+//    }
+
+//    public void setRegistered(Boolean registered) {
+//        this.registered = registered;
+//    }
+
+    public EventCategory getEventCategory() {
+        return eventCategory;
     }
 
-    public void setRegistered(Boolean registered) {
-        this.registered = registered;
+    public void setEventCategory(EventCategory eventCategory) {
+        this.eventCategory = eventCategory;
     }
-
-    public EventType getType() {
-        return type;
-    }
-
-    public void setType(EventType type) {
-        this.type = type;
-    }
-
-
 
     @Override
     public String toString() {
