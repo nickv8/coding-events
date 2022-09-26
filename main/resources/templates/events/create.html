@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-
 <head th:replace="fragments :: head"></head>
-
 <body class="container">
+
 <header th:replace="fragments :: header"></header>
 
-<h1>Create Event</h1>
-
-<p th:text="${errorMsg}" style="color:red;"></p>
-
-<nav th:replace="fragments :: navigation"></nav>
-
-<!-- this is the form to be completed by user, using bootstrap classes-->
 <form method="post">
     <div class="form-group">
         <label>Name
-            <input type="text" th:field="${event.name}" class="form-control"/>
+            <input th:field="${event.name}" class="form-control">
         </label>
         <p class="error" th:errors="${event.name}"></p>
     </div>
     <div class="form-group">
         <label>Description
-            <input type="text" th:field="${event.description}" class="form-control"/>
+            <input th:field="${event.eventDetails.description}" class="form-control">
         </label>
-        <p class="error" th:errors="${event.description}"></p>
-    </div>
-    <div class="form-group">
-        <label>Location
-         <input type="text" th:field="${event.location}" class="form-control"/>
-        </label>
-        <p class="error" th:errors="${event.location}"></p>
+        <p class="error" th:errors="${event.eventDetails.description}"></p>
     </div>
     <div class="form-group">
         <label>Contact Email
-            <input type="text" th:field="${event.contactEmail}" class="form-control"/>
+            <input th:field="${event.eventDetails.contactEmail}" class="form-control">
         </label>
-        <p class="error" th:errors="${event.contactEmail}"></p>
+        <p class="error" th:errors="${event.eventDetails.contactEmail}"></p>
     </div>
-<!--    <div class="form-group">-->
-<!--        <label>Registered-->
-<!--            <input type="checkbox" th:field="${event.registered}" />-->
-<!--        </label>-->
-<!--        <p class="error" th:errors="${event.registered}"></p>-->
-<!--    </div>-->
-<!--    <p class="error" th:errors="${event.registered}"></p>-->
     <div class="form-group">
-        <label>Categories
+        <label>Category
             <select th:field="${event.eventCategory}">
                 <option th:each="eventCategory : ${categories}"
                         th:value="${eventCategory.id}"
                         th:text="${eventCategory.name}"
                 ></option>
             </select>
-            <p class="errors" th:errors="${event.eventCategory}"></p>
+            <p class="error" th:errors="${event.eventCategory}"></p>
         </label>
     </div>
     <div class="form-group">
-        <input type="submit" value="Create Event" class="btn btn-success"/>
+        <input type="submit" value="Create" class="btn btn-success">
     </div>
-
 </form>
 
 </body>

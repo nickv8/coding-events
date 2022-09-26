@@ -19,12 +19,12 @@ public abstract class AbstractEntity {
 
 
     @Override
- public boolean equals(Object o) {
-  if (this == o) return true;
-  if (!(o instanceof Event)) return false;
-  AbstractEntity entity = (AbstractEntity) o;
-  return id == entity.id;
- }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractEntity entity = (AbstractEntity) o;
+        return id == entity.id;
+    }
 
     @Override
     public int hashCode() {
