@@ -1,0 +1,3 @@
+[submodule "add-tags"]
+	path = add-tags
+	url = https://github.com/nickv8/coding-events-demo.git
