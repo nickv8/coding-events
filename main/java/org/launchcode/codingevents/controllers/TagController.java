@@ -22,9 +22,9 @@ public class TagController {
 
     @GetMapping
     public String displayTags(Model model) {
-        model.addAttribute("title", "All tags");
+        model.addAttribute("title", "All Tags");
         model.addAttribute("tags", tagRepository.findAll());
-        return  "tags/index";
+        return "tags/index";
     }
 
     @GetMapping("create")
@@ -38,18 +38,13 @@ public class TagController {
     public String processCreateTagForm(@ModelAttribute @Valid Tag tag,
                                        Errors errors, Model model) {
 
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Create Tag");
             model.addAttribute(tag);
             return "tags/create";
         }
 
         tagRepository.save(tag);
-        return "redirect: ";
+        return "redirect:";
     }
-
-
-
-
-
 }

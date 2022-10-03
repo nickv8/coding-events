@@ -18,15 +18,15 @@ public class EventCategoryController {
     private EventCategoryRepository eventCategoryRepository;
 
     @GetMapping
-    public String displayAllEvents(Model model) {
+    public String displayAllCategories(Model model) {
         model.addAttribute("title", "All Categories");
-        model.addAttribute("eventCategories", eventCategoryRepository.findAll());
+        model.addAttribute("categories", eventCategoryRepository.findAll());
         return "eventCategories/index";
     }
 
     @GetMapping("create")
     public String renderCreateEventCategoryForm(Model model) {
-        model.addAttribute("title","Create Category");
+        model.addAttribute("title", "Create Category");
         model.addAttribute(new EventCategory());
         return "eventCategories/create";
     }
@@ -35,7 +35,7 @@ public class EventCategoryController {
     public String processCreateEventCategoryForm(@Valid @ModelAttribute EventCategory eventCategory,
                                                  Errors errors, Model model) {
 
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             model.addAttribute("title", "Create Category");
             model.addAttribute(new EventCategory());
             return "eventCategories/create";
@@ -43,6 +43,6 @@ public class EventCategoryController {
 
         eventCategoryRepository.save(eventCategory);
         return "redirect:";
-
     }
+
 }
