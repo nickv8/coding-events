@@ -1,6 +1,7 @@
 package org.launchcode.codingevents.models;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 @Entity
@@ -26,13 +27,15 @@ public class Event extends AbstractEntity {
     @NotNull(message= "Category is required")
     private EventCategory eventCategory;
 
-    public Event(String name, String description, String location, String contactEmail, Boolean registered, EventCategory eventCategory) {
+    @OneToOne(cascade = CascadeType.ALL)
+    @Valid
+    @NotNull
+    private EventDetails eventDetails;
+
+    public Event(String name, String location, EventCategory eventCategory) {
 
         this.name = name;
-        this.description = description;
         this.location = location;
-        this.contactEmail = contactEmail;
-//        this.registered = registered;
         this.eventCategory = eventCategory;
 
     }
@@ -47,21 +50,6 @@ public class Event extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getContactEmail() {
-        return contactEmail;
-    }
-
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
-    }
 
     public String getLocation() {
         return location;
@@ -71,13 +59,13 @@ public class Event extends AbstractEntity {
         this.location = location;
     }
 
-//    public Boolean getRegistered() {
-//        return registered;
-//    }
+    public EventDetails getEventDetails() {
+        return eventDetails;
+    }
 
-//    public void setRegistered(Boolean registered) {
-//        this.registered = registered;
-//    }
+    public void setEventDetails(EventDetails eventDetails) {
+        this.eventDetails = eventDetails;
+    }
 
     public EventCategory getEventCategory() {
         return eventCategory;
